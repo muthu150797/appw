@@ -1,0 +1,31 @@
+name: Build APK with EAS (Without Local Install)
+
+on:
+  push:
+    branches:
+      - main  # Change this if your main branch is different
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install EAS CLI (only in GitHub Actions)
+        run: npm install -g eas-cli
+
+      - name: Authenticate with Expo
+        run: eas login --token WJMEXgXgakHZZM_xNfAI4QNLUi8UNL-oCyO8WYkp
+
+      - name: Build APK
+        run: eas build --platform android --profile preview --non-interactive
