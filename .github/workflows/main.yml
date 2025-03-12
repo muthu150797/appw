@@ -44,4 +44,4 @@ jobs:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
         run: eas build --platform android --profile preview --non-interactive
         working-directory: ./excited-indigo-watermelonqw  # Change if project is in a subfolder
-        
+      
