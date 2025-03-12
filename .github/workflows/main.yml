@@ -30,8 +30,12 @@ jobs:
       - name: Install EAS CLI (only in GitHub Actions)
         run: npm install -g eas-cli
 
-      - name: Authenticate with Expo
-        run: npx eas-cli login --token ${{ secrets.EXPO_TOKEN }}
+      - name: Authenticate with Expo using Environment Variable
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+        run: echo "EXPO_TOKEN is set"
 
       - name: Build APK
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
         run: eas build --platform android --profile preview --non-interactive
