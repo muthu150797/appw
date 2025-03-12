@@ -35,7 +35,12 @@ jobs:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
         run: echo "EXPO_TOKEN is set"
 
+      - name: Debug EAS Project Structure
+        run: ls -la
+        working-directory: ./excited-indigo-watermelonqw  # Change if project is in a subfolder
+
       - name: Build APK
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
         run: eas build --platform android --profile preview --non-interactive
+        working-directory: ./excited-indigo-watermelonqw  # Change if project is in a subfolder
