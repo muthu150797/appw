@@ -31,7 +31,7 @@ jobs:
         run: npm install -g eas-cli
 
       - name: Authenticate with Expo
-        run: eas login --token WJMEXgXgakHZZM_xNfAI4QNLUi8UNL-oCyO8WYkp
+        run: eas whoami --token=WJMEXgXgakHZZM_xNfAI4QNLUi8UNL-oCyO8WYkp
 
       - name: Build APK
         run: eas build --platform android --profile preview --non-interactive
